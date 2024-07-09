@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, Drawer, Form, Checkbox, Button, Divider, Dropdown } from "antd";
+import { Input, Drawer, Form, Checkbox, Divider, Dropdown } from "antd";
 import {
   DownOutlined,
   SearchOutlined,
@@ -125,7 +125,7 @@ const Navbar = () => {
                     .replace(" ", "-")}/${subCategory
                     .toLowerCase()
                     .replace(" ", "-")}`}
-                  className="text-gray-800 hover:text-blue-600 transition duration-300 ease-in-out"
+                  className="text-gray-800 hover:text-primary transition duration-300 ease-in-out"
                 >
                   {subCategory}
                 </Link>
@@ -141,7 +141,7 @@ const Navbar = () => {
                         .replace(" ", "-")}/${item
                         .toLowerCase()
                         .replace(" ", "-")}`}
-                      className="text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out block"
+                      className="text-gray-600 hover:text-primary transition duration-300 ease-in-out block"
                     >
                       {item}
                     </Link>
@@ -164,14 +164,14 @@ const Navbar = () => {
               <Link
                 key={item}
                 to={`/${item.toLowerCase().replace(" ", "-")}`}
-                className="text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out"
+                className="text-gray-600 hover:text-primary transition duration-300 ease-in-out"
               >
                 {item}
-                <div className="h-0.5 bg-transparent group-hover:bg-blue-600 transition-all duration-300 ease-in-out"></div>
+                <div className="h-0.5 bg-transparent group-hover:bg-primary transition-all duration-300 ease-in-out"></div>
               </Link>
             ))}
           </div>
-          <div className="text-blue-600 font-semibold tracking-wide hidden sm:block">
+          <div className="text-primary font-semibold tracking-wide hidden sm:block">
             FREE SHIPPING WORLDWIDE
           </div>
           <div className="flex space-x-6 items-center">
@@ -179,7 +179,7 @@ const Navbar = () => {
               <a
                 key={social}
                 href={`https://${social}.com`}
-                className="text-gray-400 hover:text-blue-600 transition duration-300 ease-in-out"
+                className="text-gray-400 hover:text-primary transition duration-300 ease-in-out"
               >
                 <i className={`fab fa-${social} text-lg`}></i>
               </a>
@@ -192,7 +192,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             <Link
               to="/"
-              className="text-4xl font-bold text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out"
+              className="text-4xl font-bold text-primary hover:text-primary-hover transition duration-300 ease-in-out"
             >
               UQMO
             </Link>
@@ -200,7 +200,7 @@ const Navbar = () => {
               <div className="relative max-w-2xl mx-auto">
                 <Input
                   placeholder="Search products..."
-                  className="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition duration-300 ease-in-out text-gray-700"
+                  className="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 focus:border-primary focus:outline-none transition duration-300 ease-in-out text-gray-700"
                 />
                 <SearchOutlined className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
               </div>
@@ -210,11 +210,11 @@ const Navbar = () => {
                 (Icon, index) => (
                   <div key={index} className="relative group">
                     <Icon
-                      className="text-2xl text-gray-600 group-hover:text-blue-600 transition duration-300 ease-in-out cursor-pointer"
+                      className="text-2xl text-gray-600 group-hover:text-primary transition duration-300 ease-in-out cursor-pointer"
                       onClick={() => showDrawer(index)}
                     />
                     {index === 2 && (
-                      <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center group-hover:bg-blue-700 transition duration-300 ease-in-out">
+                      <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center group-hover:bg-primary-hover transition duration-300 ease-in-out">
                         {cartItems.length}
                       </span>
                     )}
@@ -239,7 +239,7 @@ const Navbar = () => {
             <div className="container mx-auto px-4">
               <Input
                 placeholder="Search products..."
-                className="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition duration-300 ease-in-out text-gray-700"
+                className="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 focus:border-primary focus:outline-none transition duration-300 ease-in-out text-gray-700"
               />
               <SearchOutlined className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
             </div>
@@ -264,12 +264,12 @@ const Navbar = () => {
               <div className="flex justify-between items-center">
                 <Link
                   to={`/${category.toLowerCase().replace(" ", "-")}`}
-                  className="text-lg text-gray-800 hover:text-blue-600 transition duration-300 ease-in-out"
+                  className="text-lg text-gray-800 hover:text-primary transition duration-300 ease-in-out"
                 >
                   {category}
                 </Link>
                 <DownOutlined
-                  className="ml-2 cursor-pointer text-gray-600 hover:text-blue-600"
+                  className="ml-2 cursor-pointer text-gray-600 hover:text-primary"
                   onClick={() => handleSubMenuToggle(index)}
                 />
               </div>
@@ -292,12 +292,12 @@ const Navbar = () => {
                             .replace(" ", "-")}/${subCategory
                             .toLowerCase()
                             .replace(" ", "-")}`}
-                          className="text-md text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out"
+                          className="text-md text-gray-600 hover:text-primary transition duration-300 ease-in-out"
                         >
                           {subCategory}
                         </Link>
                         <DownOutlined
-                          className="ml-2 cursor-pointer text-gray-600 hover:text-blue-600"
+                          className="ml-2 cursor-pointer text-gray-600 hover:text-primary"
                           onClick={() => handleSubCategoryToggle(subIndex)}
                         />
                       </div>
@@ -322,7 +322,7 @@ const Navbar = () => {
                                   .replace(" ", "-")}/${item
                                   .toLowerCase()
                                   .replace(" ", "-")}`}
-                                className="text-sm text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out block"
+                                className="text-sm text-gray-600 hover:text-primary transition duration-300 ease-in-out block"
                               >
                                 {item}
                               </Link>
@@ -349,10 +349,10 @@ const Navbar = () => {
               >
                 <Link
                   to={`/${category.toLowerCase().replace(" ", "-")}`}
-                  className="text-lg text-gray-800 hover:text-blue-600 transition duration-300 ease-in-out mx-2 cursor-pointer"
+                  className="text-lg text-gray-800 hover:text-primary transition duration-300 ease-in-out mx-2 cursor-pointer"
                 >
                   {category}
-                  <div className="h-0.5 bg-transparent group-hover:bg-blue-600 transition-all duration-300 ease-in-out"></div>
+                  <div className="h-0.5 bg-transparent group-hover:bg-primary transition-all duration-300 ease-in-out"></div>
                 </Link>
               </Dropdown>
             ))}
@@ -388,38 +388,44 @@ const Navbar = () => {
                 <Checkbox>Remember me</Checkbox>
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" className="w-full">
+                <button
+                  type="submit"
+                  className="w-full bg-primary text-white py-2 rounded hover:bg-primary-hover"
+                >
                   Log In
-                </Button>
+                </button>
               </Form.Item>
               <Divider>Or</Divider>
               <Form.Item>
-                <Button
-                  type="default"
-                  className="w-full"
+                <button
+                  type="button"
+                  className="w-full bg-secondary text-white py-2 rounded hover:bg-secondary-hover"
                   onClick={switchToSignUp}
                 >
                   Sign Up
-                </Button>
+                </button>
               </Form.Item>
             </>
           )}
           {formMode === "signup" && (
             <>
               <Form.Item>
-                <Button type="primary" htmlType="submit" className="w-full">
+                <button
+                  type="submit"
+                  className="w-full bg-primary text-white py-2 rounded hover:bg-primary-hover"
+                >
                   Sign Up
-                </Button>
+                </button>
               </Form.Item>
               <Divider>Or</Divider>
               <Form.Item>
-                <Button
-                  type="default"
-                  className="w-full"
+                <button
+                  type="button"
+                  className="w-full bg-secondary text-white py-2 rounded hover:bg-secondary-hover"
                   onClick={switchToLogin}
                 >
                   Log In
-                </Button>
+                </button>
               </Form.Item>
             </>
           )}
@@ -457,11 +463,11 @@ const Navbar = () => {
                     Color: {item.color}, Size: {item.size}
                   </p>
                   <div className="flex items-center mt-2">
-                    <button className="px-2 py-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-200">
+                    <button className="px-2 py-1 border border-primary rounded text-gray-700 hover:bg-primary-hover">
                       -
                     </button>
                     <span className="px-3">{item.quantity}</span>
-                    <button className="px-2 py-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-200">
+                    <button className="px-2 py-1 border border-primary rounded text-gray-700 hover:bg-primary-hover">
                       +
                     </button>
                   </div>
@@ -480,12 +486,18 @@ const Navbar = () => {
               <h4 className="text-lg font-semibold">Subtotal</h4>
               <p className="text-lg font-semibold">${subtotal}</p>
             </div>
-            <Button type="default" className="w-full mt-4 mb-2">
+            <button
+              type="button"
+              className="w-full mt-4 mb-2 bg-secondary text-white py-2 rounded hover:bg-secondary-hover"
+            >
               View Cart
-            </Button>
-            <Button type="primary" className="w-full">
+            </button>
+            <button
+              type="button"
+              className="w-full bg-primary text-white py-2 rounded hover:bg-primary-hover"
+            >
               Checkout
-            </Button>
+            </button>
           </div>
         </div>
       </Drawer>

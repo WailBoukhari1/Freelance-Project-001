@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: 'pink', // same as Ant Design primary color
+        secondary: 'purple', // same as Ant Design secondary color
+        'primary-hover': '#ff69b4', // custom hover color for primary
+        'secondary-hover': '#800080', // custom hover color for secondary
+      },
+    },
   },
   plugins: [],
 }
