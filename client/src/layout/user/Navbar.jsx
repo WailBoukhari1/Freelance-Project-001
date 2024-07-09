@@ -10,7 +10,6 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import classNames from "classnames";
 
 const Navbar = () => {
   const [visibleDrawer, setVisibleDrawer] = useState(null);
@@ -20,38 +19,19 @@ const Navbar = () => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [openSubCategoryMenu, setOpenSubCategoryMenu] = useState(null);
 
-  const showDrawer = (drawer) => {
-    setVisibleDrawer(drawer);
-  };
-
+  const showDrawer = (drawer) => setVisibleDrawer(drawer);
   const closeDrawer = () => {
     setVisibleDrawer(null);
     setFormMode("login");
   };
-
-  const toggleBurgerMenu = () => {
-    setBurgerMenuOpen(!burgerMenuOpen);
-  };
-
-  const toggleSearchBar = () => {
-    setSearchBarVisible(!searchBarVisible);
-  };
-
-  const switchToSignUp = () => {
-    setFormMode("signup");
-  };
-
-  const switchToLogin = () => {
-    setFormMode("login");
-  };
-
-  const handleSubMenuToggle = (index) => {
+  const toggleBurgerMenu = () => setBurgerMenuOpen(!burgerMenuOpen);
+  const toggleSearchBar = () => setSearchBarVisible(!searchBarVisible);
+  const switchToSignUp = () => setFormMode("signup");
+  const switchToLogin = () => setFormMode("login");
+  const handleSubMenuToggle = (index) =>
     setOpenSubMenu(openSubMenu === index ? null : index);
-  };
-
-  const handleSubCategoryToggle = (index) => {
+  const handleSubCategoryToggle = (index) =>
     setOpenSubCategoryMenu(openSubCategoryMenu === index ? null : index);
-  };
 
   const cartItems = [
     {
@@ -97,20 +77,8 @@ const Navbar = () => {
     "Category 9",
     "Category 10",
   ];
-
   const subCategories = ["Sub-category A", "Sub-category B", "Sub-category C"];
-  const items = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "Item 6",
-    "Item 7",
-    "Item 8",
-    "Item 9",
-    "Item 10",
-  ];
+  const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
 
   function createMegaMenu(category) {
     return (
@@ -167,11 +135,10 @@ const Navbar = () => {
                 className="text-gray-600 hover:text-primary transition duration-300 ease-in-out"
               >
                 {item}
-                <div className="h-0.5 bg-transparent group-hover:bg-primary transition-all duration-300 ease-in-out"></div>
               </Link>
             ))}
           </div>
-          <div className="text-primary font-semibold tracking-wide hidden sm:block">
+          <div className="text-primary font-semibold tracking-wide hidden sm:flex items-center space-x-4">
             FREE SHIPPING WORLDWIDE
           </div>
           <div className="flex space-x-6 items-center">
@@ -192,17 +159,17 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             <Link
               to="/"
-              className="text-4xl font-bold text-primary hover:text-primary-hover transition duration-300 ease-in-out"
+              className="text-4xl font-bold text-gray-400 hover:text-primary transition duration-300 ease-in-out"
             >
-              UQMO
+              UQMQ
             </Link>
             <div className="flex-grow mx-12 hidden sm:block">
               <div className="relative max-w-2xl mx-auto">
                 <Input
                   placeholder="Search products..."
-                  className="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 focus:border-primary focus:outline-none transition duration-300 ease-in-out text-gray-700"
+                  className="w-full pl-12 pr-4 py-3 rounded-full border-2 border-gray-200 focus:border-primary hover:border-primary focus:outline-none transition duration-300 ease-in-out text-gray-700"
                 />
-                <SearchOutlined className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
+                <SearchOutlined className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary text-xl" />
               </div>
             </div>
             <div className="flex items-center space-x-8">
@@ -274,15 +241,7 @@ const Navbar = () => {
                 />
               </div>
               {openSubMenu === index && (
-                <div
-                  className={classNames(
-                    "mt-2 transition-all duration-300 ease-in-out",
-                    {
-                      "max-h-0 overflow-hidden": openSubMenu !== index,
-                      "max-h-screen": openSubMenu === index,
-                    }
-                  )}
-                >
+                <div className="mt-2">
                   {subCategories.map((subCategory, subIndex) => (
                     <div key={subIndex} className="ml-4">
                       <div className="flex justify-between items-center">
@@ -302,16 +261,7 @@ const Navbar = () => {
                         />
                       </div>
                       {openSubCategoryMenu === subIndex && (
-                        <ul
-                          className={classNames(
-                            "ml-4 list-none transition-all duration-300 ease-in-out",
-                            {
-                              "max-h-0 overflow-hidden":
-                                openSubCategoryMenu !== subIndex,
-                              "max-h-screen": openSubCategoryMenu === subIndex,
-                            }
-                          )}
-                        >
+                        <ul className="ml-4 list-none">
                           {items.map((item, itemIndex) => (
                             <li key={itemIndex} className="mb-1">
                               <Link
@@ -352,7 +302,6 @@ const Navbar = () => {
                   className="text-lg text-gray-800 hover:text-primary transition duration-300 ease-in-out mx-2 cursor-pointer"
                 >
                   {category}
-                  <div className="h-0.5 bg-transparent group-hover:bg-primary transition-all duration-300 ease-in-out"></div>
                 </Link>
               </Dropdown>
             ))}
@@ -390,7 +339,7 @@ const Navbar = () => {
               <Form.Item>
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white py-2 rounded hover:bg-primary-hover"
+                  className="w-full bg-primary text-white py-2 rounded border border-primary hover:bg-white hover:text-primary transition duration-300 ease-in-out"
                 >
                   Log In
                 </button>
@@ -399,7 +348,7 @@ const Navbar = () => {
               <Form.Item>
                 <button
                   type="button"
-                  className="w-full bg-secondary text-white py-2 rounded hover:bg-secondary-hover"
+                  className="w-full bg-secondary text-primary py-2 rounded border border-primary hover:bg-primary hover:text-white transition duration-300 ease-in-out"
                   onClick={switchToSignUp}
                 >
                   Sign Up
@@ -412,7 +361,7 @@ const Navbar = () => {
               <Form.Item>
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white py-2 rounded hover:bg-primary-hover"
+                  className="w-full bg-primary text-white py-2 rounded border border-primary hover:bg-white hover:text-primary transition duration-300 ease-in-out"
                 >
                   Sign Up
                 </button>
@@ -421,7 +370,7 @@ const Navbar = () => {
               <Form.Item>
                 <button
                   type="button"
-                  className="w-full bg-secondary text-white py-2 rounded hover:bg-secondary-hover"
+                  className="w-full bg-secondary text-primary py-2 rounded border border-primary hover:bg-primary hover:text-white   transition duration-300 ease-in-out"
                   onClick={switchToLogin}
                 >
                   Log In
@@ -463,11 +412,11 @@ const Navbar = () => {
                     Color: {item.color}, Size: {item.size}
                   </p>
                   <div className="flex items-center mt-2">
-                    <button className="px-2 py-1 border border-primary rounded text-gray-700 hover:bg-primary-hover">
+                    <button className="px-2 py-1 border border-primary rounded text-gray-700 hover:bg-primary hover:text-white transition duration-300 ease-in-out">
                       -
                     </button>
                     <span className="px-3">{item.quantity}</span>
-                    <button className="px-2 py-1 border border-primary rounded text-gray-700 hover:bg-primary-hover">
+                    <button className="px-2 py-1 border border-primary rounded text-gray-700 hover:bg-primary hover:text-white transition duration-300 ease-in-out">
                       +
                     </button>
                   </div>
@@ -488,13 +437,13 @@ const Navbar = () => {
             </div>
             <button
               type="button"
-              className="w-full mt-4 mb-2 bg-secondary text-white py-2 rounded hover:bg-secondary-hover"
+              className="w-full mt-4 mb-2 bg-secondary text-primary py-2 rounded border border-primary hover:bg-primary hover:text-white transition duration-300 ease-in-out"
             >
               View Cart
             </button>
             <button
               type="button"
-              className="w-full bg-primary text-white py-2 rounded hover:bg-primary-hover"
+              className="w-full bg-primary text-white py-2 rounded border border-primary hover:bg-white hover:text-primary transition duration-300 ease-in-out"
             >
               Checkout
             </button>
