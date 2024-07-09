@@ -9,7 +9,6 @@ const FeaturedProductsTabs = () => {
     { id: "promo", label: "Promotions" },
   ];
 
-
   const products = {
     new: [
       {
@@ -328,72 +327,58 @@ const FeaturedProductsTabs = () => {
     const currentProducts = products[activeTab] || [];
 
     return (
-      <div className=" rounded-none grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {currentProducts.map((product) => (
           <div
             key={product.id}
-            className=" rounded-none group bg-[#e7e3d3]   overflow-hidden relative transition duration-300 ease-in-out transform hover:shadow-xl hover:scale-105"
+            className="group bg-pink-100 rounded-lg overflow-hidden relative transition duration-300 ease-in-out transform hover:shadow-xl hover:scale-105"
           >
             <img
               src={product.image}
               alt={product.title}
-              className=" rounded-none w-full h-64 object-cover"
+              className="w-full h-64 object-cover rounded-t-lg"
             />
-            <div className=" rounded-none absolute inset-0 bg-gray-900 bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-pink-900 bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <button
-                className=" rounded-none text-white text-lg font-semibold bg-gray-900 bg-opacity-75 py-2 px-6  hover:bg-opacity-100 transition duration-300 mb-2"
+                className="text-white text-lg font-semibold bg-pink-900 bg-opacity-75 py-2 px-6 rounded-lg hover:bg-opacity-100 transition duration-300 mb-2"
                 onClick={() => toggleDetails(product.id)}
               >
                 {showDetails[product.id] ? "Hide Details" : "Show Details"}
               </button>
-              <button className=" rounded-none text-white text-lg font-semibold bg-gray-900 bg-opacity-75 py-2 px-6  hover:bg-opacity-100 transition duration-300">
+              <button className="text-white text-lg font-semibold bg-pink-900 bg-opacity-75 py-2 px-6 rounded-lg hover:bg-opacity-100 transition duration-300">
                 Add to Cart
               </button>
             </div>
-            <div className=" rounded-none p-4">
-              <p className=" rounded-none text-gray-500 text-sm">
-                {product.category}
-              </p>
-              <h3 className=" rounded-none text-xl font-semibold mb-2">
-                {product.title}
-              </h3>
-              <div className=" rounded-none flex justify-between items-center mt-4">
-                <div className=" rounded-none flex flex-col">
-                  <span className=" rounded-none text-lg font-bold text-green-600">
+            <div className="p-4">
+              <p className="text-pink-500 text-sm">{product.category}</p>
+              <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
+              <div className="flex justify-between items-center mt-4">
+                <div className="flex flex-col">
+                  <span className="text-lg font-bold text-pink-600">
                     ${product.discountedPrice.toFixed(2)}
                   </span>
                   {product.price !== product.discountedPrice && (
-                    <span className=" rounded-none line-through text-sm text-gray-500">
+                    <span className="line-through text-sm text-gray-500">
                       ${product.price.toFixed(2)}
                     </span>
                   )}
                 </div>
-                <div className=" rounded-none text-sm">
+                <div className="text-sm">
                   {product.stock > 0 ? (
-                    <span className=" rounded-none text-green-600">
-                      In stock: {product.stock}
-                    </span>
+                    <span className="text-pink-600">In stock: {product.stock}</span>
                   ) : (
-                    <span className=" rounded-none text-red-600">
-                      Out of stock
-                    </span>
+                    <span className="text-red-600">Out of stock</span>
                   )}
                 </div>
               </div>
               {showDetails[product.id] && (
-                <div className=" rounded-none mt-4">
-                  <p className=" rounded-none text-sm text-gray-700">
-                    {product.description}
-                  </p>
+                <div className="mt-4">
+                  <p className="text-sm text-gray-700">{product.description}</p>
                 </div>
               )}
             </div>
-            <span className=" rounded-none absolute top-2 left-2 bg-red-500 text-white py-1 px-3 text-xs z-10">
-              {calculateDiscount(
-                product.price,
-                product.discountedPrice
-              ).toFixed(0)}
-              % off
+            <span className="absolute top-2 left-2 bg-red-500 text-white py-1 px-3 text-xs z-10 rounded-lg">
+              {calculateDiscount(product.price, product.discountedPrice).toFixed(0)}% off
             </span>
           </div>
         ))}
@@ -402,23 +387,23 @@ const FeaturedProductsTabs = () => {
   };
 
   return (
-    <div className=" rounded-none max-w-6xl mx-auto">
-      <div className=" rounded-none flex justify-center mb-6">
+    <div className="max-w-6xl mx-auto">
+      <div className="flex justify-center mb-6">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabChange(tab.id)}
-            className={`text-lg font-semibold mx-4 px-6 py-2 rounded ${
+            className={`text-lg font-semibold mx-4 px-6 py-2 rounded-lg ${
               activeTab === tab.id
-                ? "bg-gray-900 text-white"
-                : "bg-gray-200 text-gray-900"
-            } hover:bg-gray-800 hover:text-white transition duration-300`}
+                ? "bg-pink-900 text-white"
+                : "bg-pink-200 text-pink-900"
+            } hover:bg-pink-800 hover:text-white transition duration-300`}
           >
             {tab.label}
           </button>
         ))}
       </div>
-      <div className=" rounded-none text-center">{renderProducts()}</div>
+      <div className="text-center">{renderProducts()}</div>
     </div>
   );
 };

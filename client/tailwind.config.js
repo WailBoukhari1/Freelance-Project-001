@@ -7,7 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: 'pink', // same as Ant Design primary color
+        primary: '#ff69b4', // Hex code for pink
+        white: '#ffffff',  // Hex code for white
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        fadeInUp: 'fadeInUp 0.6s ease-out forwards',
       },
     },
   },

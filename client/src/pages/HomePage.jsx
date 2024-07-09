@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return (
     <UserLayout>
-      <section className="hero bg-gray-200 py-5 px-10 text-center relative">
+      <section className="hero text-center relative">
         <HeroBanner />
       </section>
 
