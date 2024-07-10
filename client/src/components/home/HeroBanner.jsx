@@ -43,7 +43,7 @@ const HeroBanner = () => {
                   <p className="text-lg md:text-xl mb-6 font-light opacity-0 translate-y-4 animate-[fadeInUp_0.6s_ease-out_0.3s_forwards]">
                     {slide.description}
                   </p>
-                  <button className="bg-rose-300 text-white py-2 px-6 rounded-full hover:bg-rose-400 transition duration-300 text-sm md:text-base font-medium shadow-md opacity-0 translate-y-4 animate-[fadeInUp_0.6s_ease-out_0.6s_forwards]">
+                  <button className="bg-rose-300 text-white py-2 px-6 rounded-lg hover:bg-rose-400 transition duration-300 text-sm md:text-base font-medium shadow-md opacity-0 translate-y-4 animate-[fadeInUp_0.6s_ease-out_0.6s_forwards]">
                     {slide.buttonText}
                   </button>
                 </div>

@@ -141,7 +141,7 @@ const CategorySlider = () => {
                     onClick={() =>
                       console.log(`Clicked on category: ${category.name}`)
                     }
-                    className="text-primary text-lg font-light tracking-wide bg-white px-8 py-3 rounded-full 
+                    className="text-primary text-lg font-light tracking-wide bg-white px-8 py-3 rounded-lg 
                hover:bg-primary hover:text-white transition duration-300 mb-8 transform translate-y-4 
                group-hover:translate-y-0 transition-transform duration-300 delay-100 shadow-md hover:shadow-lg"
                   >

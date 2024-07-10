@@ -11,18 +11,18 @@ const HomePage = () => {
 
   return (
     <UserLayout>
-      <section className="hero text-center relative">
+      <section className="hero py-5 text-center relative">
         <HeroBanner />
       </section>
 
-      <section className="category-section py-5 px-10">
+      <section className="category-section py-5 ">
         <CategorySlider /> {/* Render CategorySlider component */}
       </section>
 
-      <section className="product-section py-5 px-10">
+      <section className="product-section py-5  bg-gradient-to-b from-pink-50 to-white">
         <FeaturedProductsTabs />
       </section>
-      <section className="product-section py-5 px-10">
+      <section className="product-section py-5">
         <ExclusiveCollections />
       </section>
 

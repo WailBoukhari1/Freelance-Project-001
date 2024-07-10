@@ -1,307 +1,58 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import PropTypes from "prop-types";
+import { notification } from "antd";
+import { useNavigate } from "react-router-dom"; // Update this import
 
 const FeaturedProductsTabs = () => {
   const [activeTab, setActiveTab] = useState("new");
+  const [showDetails] = useState({});
+  const [quickViewProduct, setQuickViewProduct] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const tabs = [
     { id: "new", label: "New Arrivals" },
     { id: "bestSellers", label: "Best Sellers" },
     { id: "promo", label: "Promotions" },
   ];
-
   const products = {
     new: [
       {
         id: 1,
-        title: "New Product Title 1",
+        title: "Comfy Maternity Dress",
         category: "Maternity",
         image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
+          "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
         price: 100,
         discountedPrice: 80,
         stock: 15,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 2,
-        title: "New Product Title 2",
-        category: "Fashion",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 120,
-        discountedPrice: 100,
-        stock: 20,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 3,
-        title: "New Product Title 3",
-        category: "Fashion",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 120,
-        discountedPrice: 100,
-        stock: 20,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 4,
-        title: "New Product Title 4",
-        category: "Fashion",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 120,
-        discountedPrice: 100,
-        stock: 20,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 5,
-        title: "New Product Title 5",
-        category: "Fashion",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 120,
-        discountedPrice: 100,
-        stock: 20,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 6,
-        title: "New Product Title 6",
-        category: "Fashion",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 120,
-        discountedPrice: 100,
-        stock: 20,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 7,
-        title: "New Product Title 7",
-        category: "Fashion",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 120,
-        discountedPrice: 100,
-        stock: 20,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 8,
-        title: "New Product Title 8",
-        category: "Fashion",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 120,
-        discountedPrice: 100,
-        stock: 20,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        description: "A comfortable and stylish dress for expecting mothers.",
       },
     ],
     bestSellers: [
       {
         id: 1,
-        title: "Best Seller Title 1",
-        category: "Electronics",
+        title: "Pregnancy Support Belt",
+        category: "Maternity",
         image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 200,
-        discountedPrice: 180,
-        stock: 10,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 2,
-        title: "Best Seller Title 2",
-        category: "Home Appliances",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 250,
-        discountedPrice: 230,
-        stock: 5,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 3,
-        title: "Best Seller Title 3",
-        category: "Home Appliances",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 250,
-        discountedPrice: 230,
-        stock: 5,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 4,
-        title: "Best Seller Title 4",
-        category: "Home Appliances",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 250,
-        discountedPrice: 230,
-        stock: 5,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 5,
-        title: "Best Seller Title 5",
-        category: "Home Appliances",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 250,
-        discountedPrice: 230,
-        stock: 5,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 6,
-        title: "Best Seller Title 6",
-        category: "Home Appliances",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 250,
-        discountedPrice: 230,
-        stock: 5,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 7,
-        title: "Best Seller Title 7",
-        category: "Home Appliances",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 250,
-        discountedPrice: 230,
-        stock: 5,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 8,
-        title: "Best Seller Title 8",
-        category: "Home Appliances",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 250,
-        discountedPrice: 230,
-        stock: 5,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+          "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
+        price: 50,
+        discountedPrice: 40,
+        stock: 20,
+        description: "Provides excellent support for your growing belly.",
       },
     ],
     promo: [
       {
         id: 1,
-        title: "Promo Product Title 1",
-        category: "Toys",
+        title: "Maternity Skincare Set",
+        category: "Beauty",
         image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 50,
-        discountedPrice: 30,
-        stock: 50,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 2,
-        title: "Promo Product Title 2",
-        category: "Books",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 40,
-        discountedPrice: 20,
-        stock: 100,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 3,
-        title: "Promo Product Title 3",
-        category: "Books",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 40,
-        discountedPrice: 20,
-        stock: 100,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 4,
-        title: "Promo Product Title 4",
-        category: "Books",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 40,
-        discountedPrice: 20,
-        stock: 100,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 5,
-        title: "Promo Product Title 5",
-        category: "Books",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 40,
-        discountedPrice: 20,
-        stock: 100,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 6,
-        title: "Promo Product Title 6",
-        category: "Books",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 40,
-        discountedPrice: 20,
-        stock: 100,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 7,
-        title: "Promo Product Title 7",
-        category: "Books",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 40,
-        discountedPrice: 20,
-        stock: 100,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      },
-      {
-        id: 8,
-        title: "Promo Product Title 8",
-        category: "Books",
-        image:
-          "https://off.com.ph/-/media/images/off/ph/products-en/update-983/plp/family-care-group-plp.png",
-        price: 40,
-        discountedPrice: 20,
-        stock: 100,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+          "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
+        price: 80,
+        discountedPrice: 60,
+        stock: 10,
+        description: "Nourishing skincare products safe for pregnancy.",
       },
     ],
   };
@@ -314,96 +65,273 @@ const FeaturedProductsTabs = () => {
     setActiveTab(tabId);
   };
 
-  const [showDetails, setShowDetails] = useState({});
+  const openQuickView = (product) => {
+    setQuickViewProduct(product);
+  };
 
-  const toggleDetails = (productId) => {
-    setShowDetails((prevState) => ({
-      ...prevState,
-      [productId]: !prevState[productId],
-    }));
+  const closeQuickView = () => {
+    setQuickViewProduct(null);
+  };
+
+  const addToCart = (product) => {
+    // Implement your add to cart logic here
+    console.log(`${product.title} added to cart`);
+  };
+
+  const goToDetailsPage = (productId) => {
+    navigate(`/product/${productId}`);
+  };
+
+  const QuickViewModal = ({ product }) => (
+    <motion.div
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={closeQuickView}
+    >
+      <motion.div
+        className="bg-white rounded-lg p-6 max-w-lg w-full"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex justify-between items-start mb-4">
+          <h3 className="text-xl font-semibold text-gray-800">
+            {product.title}
+          </h3>
+          <button
+            onClick={closeQuickView}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-64 object-cover rounded-lg mb-4"
+        />
+        <p className="text-pink-600 text-sm font-medium mb-2">
+          {product.category}
+        </p>
+        <p className="text-gray-600 mb-4">{product.description}</p>
+        <div className="flex justify-between items-center mb-4">
+          <div>
+            <span className="text-2xl font-bold text-pink-700">
+              ${product.discountedPrice.toFixed(2)}
+            </span>
+            {product.price !== product.discountedPrice && (
+              <span className="ml-2 line-through text-sm text-gray-500">
+                ${product.price.toFixed(2)}
+              </span>
+            )}
+          </div>
+          <span className="text-sm text-gray-600 bg-pink-50 px-2 py-1 rounded-lg">
+            {product.stock > 0 ? `In stock: ${product.stock}` : "Out of stock"}
+          </span>
+        </div>
+        <button
+          className="w-full bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition-colors duration-300 font-medium"
+          onClick={() => {
+            addToCart(product);
+            closeQuickView();
+          }}
+        >
+          Add to Cart
+        </button>
+      </motion.div>
+    </motion.div>
+  );
+
+  QuickViewModal.propTypes = {
+    product: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      discountedPrice: PropTypes.number.isRequired,
+      stock: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   const renderProducts = () => {
     const currentProducts = products[activeTab] || [];
 
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        {currentProducts.map((product) => (
-          <div
+      <motion.div
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {currentProducts.map((product, index) => (
+          <motion.div
             key={product.id}
-            className="group bg-pink-100 rounded-lg overflow-hidden relative transition duration-300 ease-in-out transform hover:shadow-xl hover:scale-105"
+            className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-pink-100 transform hover:scale-105"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
           >
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-64 object-cover rounded-t-lg"
-            />
-            <div className="absolute inset-0 bg-pink-900 bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <button
-                className="text-white text-lg font-semibold bg-pink-900 bg-opacity-75 py-2 px-6 rounded-lg hover:bg-opacity-100 transition duration-300 mb-2"
-                onClick={() => toggleDetails(product.id)}
+            <div className="relative group">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute top-2 right-2 bg-pink-500 text-white py-1 px-2 text-xs rounded-lg shadow-md">
+                {calculateDiscount(
+                  product.price,
+                  product.discountedPrice
+                ).toFixed(0)}
+                % off
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-pink-900 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
+              <motion.div
+                className="absolute bottom-2 left-2 right-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {showDetails[product.id] ? "Hide Details" : "Show Details"}
-              </button>
-              <button className="text-white text-lg font-semibold bg-pink-900 bg-opacity-75 py-2 px-6 rounded-lg hover:bg-opacity-100 transition duration-300">
-                Add to Cart
-              </button>
+                <button
+                  className="w-full bg-white text-pink-800 py-1 px-2 rounded-lg hover:bg-pink-100 transition-colors duration-300 text-sm font-medium"
+                  onClick={() => openQuickView(product)}
+                >
+                  Quick View
+                </button>
+              </motion.div>
             </div>
-            <div className="p-4">
-              <p className="text-pink-500 text-sm">{product.category}</p>
-              <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
-              <div className="flex justify-between items-center mt-4">
-                <div className="flex flex-col">
-                  <span className="text-lg font-bold text-pink-600">
+            <div className="p-3">
+              <p className="text-pink-600 text-xs font-medium mb-1">
+                {product.category}
+              </p>
+              <h3 className="text-sm font-semibold mb-2 text-gray-800 truncate">
+                {product.title}
+              </h3>
+              <div className="flex justify-between items-center mb-2">
+                <div>
+                  <span className="text-lg font-bold text-pink-700">
                     ${product.discountedPrice.toFixed(2)}
                   </span>
                   {product.price !== product.discountedPrice && (
-                    <span className="line-through text-sm text-gray-500">
+                    <span className="ml-1 line-through text-xs text-gray-500">
                       ${product.price.toFixed(2)}
                     </span>
                   )}
                 </div>
-                <div className="text-sm">
-                  {product.stock > 0 ? (
-                    <span className="text-pink-600">In stock: {product.stock}</span>
-                  ) : (
-                    <span className="text-red-600">Out of stock</span>
-                  )}
-                </div>
+                <span className="text-xs text-gray-600 bg-pink-50 px-1 py-0.5 rounded-lg">
+                  {product.stock > 0
+                    ? `Stock: ${product.stock}`
+                    : "Out of stock"}
+                </span>
               </div>
-              {showDetails[product.id] && (
-                <div className="mt-4">
-                  <p className="text-sm text-gray-700">{product.description}</p>
-                </div>
-              )}
+              <div className="space-y-2">
+                <motion.button
+                  onClick={() => goToDetailsPage(product.id)}
+                  className="w-full bg-pink-100 text-pink-800 py-1 px-2 rounded-lg hover:bg-pink-200 transition-colors duration-300 text-sm font-medium"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  View Details
+                </motion.button>
+                <motion.button
+                  className="w-full bg-pink-500 text-white py-1 px-2 rounded-lg hover:bg-pink-600 transition-colors duration-300 text-sm font-medium"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    addToCart(product);
+                    notification.success({
+                      message: "Product Added",
+                      description: `${product.title} has been added to your cart.`,
+                    });
+                  }}
+                >
+                  Add to Cart
+                </motion.button>
+              </div>
+              <AnimatePresence>
+                {showDetails[product.id] && (
+                  <motion.p
+                    className="mt-2 text-xs text-gray-600 bg-pink-50 p-2 rounded-lg"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {product.description}
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </div>
-            <span className="absolute top-2 left-2 bg-red-500 text-white py-1 px-3 text-xs z-10 rounded-lg">
-              {calculateDiscount(product.price, product.discountedPrice).toFixed(0)}% off
-            </span>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     );
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="flex justify-center mb-6">
+    <div className="max-w-7xl mx-auto px-4 py-12">
+      <motion.h2
+        className="text-6xl font-serif font-light text-center mb-6 text-primary relative
+                      before:content-[''] before:absolute before:w-24 before:h-1 before:bg-primary
+                      before:-bottom-2 before:left-1/2 before:-translate-x-1/2"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Maternity Essentials
+      </motion.h2>
+      <motion.div
+        className="flex justify-center mb-8 space-x-2"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         {tabs.map((tab) => (
-          <button
+          <motion.button
             key={tab.id}
             onClick={() => handleTabChange(tab.id)}
-            className={`text-lg font-semibold mx-4 px-6 py-2 rounded-lg ${
+            className={`text-sm font-semibold px-4 py-2 rounded-lg transition-colors duration-300 ${
               activeTab === tab.id
-                ? "bg-pink-900 text-white"
-                : "bg-pink-200 text-pink-900"
-            } hover:bg-pink-800 hover:text-white transition duration-300`}
+                ? "bg-pink-500 text-white shadow-md"
+                : "bg-white text-pink-800 hover:bg-pink-100"
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             {tab.label}
-          </button>
+          </motion.button>
         ))}
-      </div>
-      <div className="text-center">{renderProducts()}</div>
+      </motion.div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+          transition={{ duration: 0.3 }}
+        >
+          {renderProducts()}
+        </motion.div>
+      </AnimatePresence>
+      {quickViewProduct && <QuickViewModal product={quickViewProduct} />}
     </div>
   );
 };
