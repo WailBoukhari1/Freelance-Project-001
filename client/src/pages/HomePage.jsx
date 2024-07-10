@@ -9,17 +9,12 @@ import LatestBlogs from "../components/home/latestBlogs"; // Import the LatestPr
 const HomePage = () => {
   return (
     <UserLayout>
-        <HeroBanner />
-    
-        <CategorySlider /> 
-
-        <FeaturedProductsTabs />
-
-        <ExclusiveCollections />
-
-        <AboutUs />
-
-        <LatestBlogs />
+      <HeroBanner />
+      <CategorySlider /> 
+      <FeaturedProductsTabs />
+      <ExclusiveCollections />
+      <AboutUs />
+      <LatestBlogs />
     </UserLayout>
   );
 };

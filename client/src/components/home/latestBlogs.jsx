@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Row, Col, Modal, Button } from "antd";
+import { Row, Col, Modal } from "antd";
 import { Link } from "react-router-dom";
 
 const LatestBlogsSection = () => {

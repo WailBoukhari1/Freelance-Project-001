@@ -1,27 +1,114 @@
+import {
+  PhoneOutlined,
+  MailOutlined,
+  FacebookOutlined,
+  TwitterOutlined,
+  InstagramOutlined,
+  LinkedinOutlined,
+} from "@ant-design/icons";
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div>
-          <h3 className="text-lg font-bold">Company Name</h3>
-          <p className="text-sm">Making quality products since 1999.</p>
+    <footer className="p-10 text-black border border-top-primary">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
+        <div className="flex flex-col items-start">
+          <h3 className="text-2xl font-extrabold mb-2 animate-fadeInUp text-pink-100">
+            Company Name
+          </h3>
+          <p className="text-sm animate-fadeInUp delay-200">
+            Making quality products since xxxx.
+          </p>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center space-x-2">
+              <PhoneOutlined className="text-pink-100" />
+              <span>+1 234 567 890</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <MailOutlined className="text-pink-100" />
+              <span>info@company.com</span>
+            </div>
+          </div>
         </div>
-        <ul className="flex space-x-4">
-          <li><a href="/about" className="hover:underline">About Us</a></li>
-          <li><a href="/services" className="hover:underline">Services</a></li>
-          <li><a href="/contact" className="hover:underline">Contact</a></li>
+        <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 animate-fadeInUp delay-400">
+          <li>
+            <a
+              href="/about"
+              className="hover:underline hover:text-pink-100 transition duration-300"
+            >
+              About Us
+            </a>
+          </li>
+          <li>
+            <a
+              href="/services"
+              className="hover:underline hover:text-pink-100 transition duration-300"
+            >
+              Services
+            </a>
+          </li>
+          <li>
+            <a
+              href="/contact"
+              className="hover:underline hover:text-pink-100 transition duration-300"
+            >
+              Contact
+            </a>
+          </li>
+          <li>
+            <a
+              href="/faq"
+              className="hover:underline hover:text-pink-100 transition duration-300"
+            >
+              FAQ
+            </a>
+          </li>
         </ul>
-        <div>
-          <p>Follow us:</p>
-          <div className="flex space-x-2">
-            <a href="https://facebook.com" className="hover:text-gray-400">FB</a>
-            <a href="https://twitter.com" className="hover:text-gray-400">TW</a>
-            <a href="https://instagram.com" className="hover:text-gray-400">IG</a>
+        <div className="flex flex-col items-start">
+          <p className="animate-fadeInUp delay-600">Follow us:</p>
+          <div className="flex space-x-4 mt-2 animate-fadeInUp delay-800">
+            <a
+              href="https://facebook.com"
+              className="hover:text-pink-100 transition duration-300"
+            >
+              <FacebookOutlined />
+            </a>
+            <a
+              href="https://twitter.com"
+              className="hover:text-pink-100 transition duration-300"
+            >
+              <TwitterOutlined />
+            </a>
+            <a
+              href="https://instagram.com"
+              className="hover:text-pink-100 transition duration-300"
+            >
+              <InstagramOutlined />
+            </a>
+            <a
+              href="https://linkedin.com"
+              className="hover:text-pink-100 transition duration-300"
+            >
+              <LinkedinOutlined />
+            </a>
           </div>
         </div>
       </div>
-      <div className="text-center text-sm mt-4">
-        © 2023 Company Name. All rights reserved.
+      <div className="flex flex-col md:flex-row justify-between items-center text-sm mt-6 animate-fadeInUp delay-1000">
+        <div>© 2024 Company Name. All rights reserved.</div>
+        <div className="space-x-4 mt-2 md:mt-0">
+          <a
+            href="/privacy"
+            className="hover:underline hover:text-pink-100 transition duration-300"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/terms"
+            className="hover:underline hover:text-pink-100 transition duration-300"
+          >
+            Terms of Service
+          </a>
+        </div>
       </div>
     </footer>
   );
