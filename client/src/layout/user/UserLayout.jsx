@@ -8,7 +8,7 @@ const UserLayout = ({ children }) => {
       <Navbar />
       <div className="container mx-auto">
         {" "}
-        <main className="flex-grow my-20">{children}</main>
+        <main className="flex-grow">{children}</main>
       </div>
       <Footer />
     </div>

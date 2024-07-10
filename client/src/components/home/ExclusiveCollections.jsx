@@ -137,7 +137,7 @@ const ExclusiveCollections = () => {
   );
 
   return (
-    <section className="bg-white text-gray-800 p-8">
+    <section className="my-5 py-10 px-10 bg-gradient-to-b from-pink-50 to-white">
       <div className="text-center">
         <Title
           level={1}
@@ -268,7 +268,7 @@ const ExclusiveCollections = () => {
               </button>
               <button
                 onClick={openSearchPopup}
-                className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300"
+                className="bg-white text-primary border border-primary hover:bg-primary hover:text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300"
               >
                 Add New Product
               </button>

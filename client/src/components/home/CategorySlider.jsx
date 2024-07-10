@@ -81,7 +81,7 @@ const CategorySlider = () => {
   };
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-br from-pink-100 to-rose-200">
+    <section className="my-5 py-10 px-10 bg-gradient-to-br from-pink-50 to-pink-100">
       <div className="container mx-auto">
         <h2
           className="text-6xl font-serif font-light text-center mb-6 text-primary relative

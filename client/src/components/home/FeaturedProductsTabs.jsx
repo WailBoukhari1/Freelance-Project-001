@@ -28,6 +28,39 @@ const FeaturedProductsTabs = () => {
         stock: 15,
         description: "A comfortable and stylish dress for expecting mothers.",
       },
+      {
+        id: 2,
+        title: "Comfy Maternity Dress",
+        category: "Maternity",
+        image:
+          "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
+        price: 100,
+        discountedPrice: 80,
+        stock: 15,
+        description: "A comfortable and stylish dress for expecting mothers.",
+      },
+      {
+        id: 3,
+        title: "Comfy Maternity Dress",
+        category: "Maternity",
+        image:
+          "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
+        price: 100,
+        discountedPrice: 80,
+        stock: 15,
+        description: "A comfortable and stylish dress for expecting mothers.",
+      },
+      {
+        id: 4,
+        title: "Comfy Maternity Dress",
+        category: "Maternity",
+        image:
+          "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
+        price: 100,
+        discountedPrice: 80,
+        stock: 15,
+        description: "A comfortable and stylish dress for expecting mothers.",
+      },
     ],
     bestSellers: [
       {
@@ -287,7 +320,7 @@ const FeaturedProductsTabs = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="max-w-7xl mx-auto from-pink-50 to-white my-5 py-10">
       <motion.h2
         className="text-6xl font-serif font-light text-center mb-6 text-primary relative
                       before:content-[''] before:absolute before:w-24 before:h-1 before:bg-primary

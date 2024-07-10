@@ -7,33 +7,19 @@ import AboutUs from "../components/home/AboutUs"; // Import the AboutUsSection c
 import LatestBlogs from "../components/home/latestBlogs"; // Import the LatestProducts component
 
 const HomePage = () => {
-
-
   return (
     <UserLayout>
-      <section className="hero py-5 text-center relative">
         <HeroBanner />
-      </section>
+    
+        <CategorySlider /> 
 
-      <section className="category-section py-5 ">
-        <CategorySlider /> {/* Render CategorySlider component */}
-      </section>
-
-      <section className="product-section py-5  bg-gradient-to-b from-pink-50 to-white">
         <FeaturedProductsTabs />
-      </section>
-      <section className="product-section py-5">
+
         <ExclusiveCollections />
-      </section>
 
-      <section className="bg-[url('https://images.everydayhealth.com/images/skin-beauty/what-are-natural-skin-care-products-alt-1440x810.jpg?sfvrsn=616dd3f2_1')] bg-cover bg-center about-us-section py-12 px-6 bg-gray-100">
         <AboutUs />
-      </section>
 
-      <section className="latest-product-section py-5 px-10">
-        <LatestBlogs />{" "}
-        {/* Corrected the component name to start with a capital letter */}
-      </section>
+        <LatestBlogs />
     </UserLayout>
   );
 };

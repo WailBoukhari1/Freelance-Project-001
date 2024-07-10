@@ -29,7 +29,7 @@ const HeroBanner = () => {
       >
         {bannerData.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full my-5">
               <img
                 src={slide.imageUrl}
                 alt={slide.alt}

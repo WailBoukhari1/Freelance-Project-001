@@ -1,6 +1,11 @@
-import { Row, Col } from "antd";
+import { useState } from "react";
+import { Row, Col, Modal, Button } from "antd";
+import { Link } from "react-router-dom";
 
 const LatestBlogsSection = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState(null);
+
   const latestBlogs = [
     {
       id: 1,
@@ -44,15 +49,35 @@ const LatestBlogsSection = () => {
     },
   ];
 
+  const showModal = (blog) => {
+    setSelectedBlog(blog);
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+    setSelectedBlog(null);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    setSelectedBlog(null);
+  };
+
   return (
-    <section className="py-12 px-6">
+    <section className="bg-gradient-to-b from-pink-50 to-white p-10 my-10">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8">Latest Blogs</h2>
+        <h2 className="text-4xl font-serif font-light text-center mb-8 text-primary">
+          Latest Blogs
+        </h2>
         <Row gutter={[24, 24]}>
           {latestBlogs.map((blog) => (
             <Col key={blog.id} xs={24} sm={12} md={8} lg={6}>
-              <div className="relative hover: transition-shadow duration-300">
-                <div className="absolute top-0 left-0 bg-red-500 text-white px-3 py-1">
+              <div
+                className="relative transition-shadow duration-300 hover:shadow-lg rounded-lg overflow-hidden cursor-pointer"
+                onClick={() => showModal(blog)}
+              >
+                <div className="absolute top-0 left-0 bg-primary text-white px-3 py-1">
                   {new Date(blog.date).toLocaleDateString("en-US", {
                     month: "short",
                     day: "2-digit",
@@ -63,14 +88,52 @@ const LatestBlogsSection = () => {
                   src={blog.image}
                   className="w-full h-48 object-cover"
                 />
-                <div className="p-4 bg-gray-100 ">
-                  <h3 className="text-lg font-semibold">{blog.title}</h3>
-                  <p className="text-gray-700 mt-2">{blog.content}</p>
+                <div className="p-4 bg-white">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {blog.title}
+                  </h3>
+                  <p className="text-gray-600 mt-2">{blog.content}</p>
+                  <div className="text-sm text-gray-500 mt-4">
+                    By {blog.author}
+                  </div>
                 </div>
               </div>
             </Col>
           ))}
         </Row>
+        {selectedBlog && (
+          <Modal
+            title={selectedBlog.title}
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            footer={null}
+          >
+            <img
+              alt={selectedBlog.title}
+              src={selectedBlog.image}
+              className="w-full h-64 object-cover mb-4"
+            />
+            <p className="text-gray-800">{selectedBlog.content}</p>
+            <div className="text-sm text-gray-500 mt-4">
+              By {selectedBlog.author} -{" "}
+              {new Date(selectedBlog.date).toLocaleDateString("en-US")}
+            </div>
+            <div className="flex justify-end mt-4">
+              <Link to={`/blog/${selectedBlog.id}`}>
+                <button className="bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded">
+                  Go to Detail Page
+                </button>
+              </Link>
+              <button
+                className="ml-4 border border-gray-300 hover:border-gray-400 text-gray-700 py-2 px-4 rounded"
+                onClick={handleCancel}
+              >
+                Cancel
+              </button>
+            </div>
+          </Modal>
+        )}
       </div>
     </section>
   );
