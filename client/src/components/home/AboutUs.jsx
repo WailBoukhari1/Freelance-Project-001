@@ -67,7 +67,7 @@ const AboutUsSection = () => {
             <Card
               key={index}
               hoverable
-              className="p-8 bg-white rounded-2xl shadow-lg transition-transform transform hover:scale-105"
+              className="p-5 bg-white rounded-2xl shadow-lg transition-transform transform hover:scale-105"
             >
               <div className="flex items-center justify-center mb-6 text-primary text-4xl">
                 {advantage.icon}

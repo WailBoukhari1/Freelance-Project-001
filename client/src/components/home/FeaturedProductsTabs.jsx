@@ -228,7 +228,7 @@ const FeaturedProductsTabs = () => {
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110"
+                className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-100"
               />
               <div className="absolute top-2 right-2 bg-pink-500 text-white py-1 px-2 text-xs rounded-lg shadow-md">
                 {calculateDiscount(
@@ -237,9 +237,9 @@ const FeaturedProductsTabs = () => {
                 ).toFixed(0)}
                 % off
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-pink-900 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
               <motion.div
-                className="absolute bottom-2 left-2 right-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                className="absolute bottom-2 left-2 right-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -320,7 +320,7 @@ const FeaturedProductsTabs = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto from-pink-50 to-white my-5 py-10">
+    <div className="max-w-7xl mx-auto from-pink-50 to-white my-5 p-10">
       <motion.h2
         className="text-6xl font-serif font-light text-center mb-6 text-primary relative
                       before:content-[''] before:absolute before:w-24 before:h-1 before:bg-primary

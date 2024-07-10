@@ -1,0 +1,61 @@
+.custom-search-input .ant-input {
+  border-color: #e91e63;
+  background-color: #fce4ec;
+}
+
+.custom-date-picker .ant-picker {
+  border-color: #e91e63;
+  background-color: #fce4ec;
+}
+
+.custom-select .ant-select-selector {
+  border-color: #e91e63;
+  background-color: #fce4ec;
+}
+
+.custom-pagination .ant-pagination-item-active a {
+  border-color: #e91e63;
+  color: #e91e63;
+}
+
+.custom-pagination .ant-pagination-item:hover a {
+  border-color: #e91e63;
+  color: #e91e63;
+}
+
+.custom-pagination .ant-pagination-item a {
+  color: #e91e63;
+}
+
+.custom-pagination .ant-pagination-item-active {
+  background-color: #fce4ec;
+  border-color: #e91e63;
+}
+
+.custom-pagination .ant-pagination-item {
+  background-color: #fce4ec;
+  border-color: #e91e63;
+}
+
+.custom-pagination .ant-pagination-item:hover {
+  background-color: #f8bbd0;
+}
+
+.custom-search-input .ant-input,
+.custom-date-picker .ant-picker,
+.custom-select .ant-select-selector {
+  border-radius: 5px;
+}
+
+.custom-search-input .ant-input:hover,
+.custom-date-picker .ant-picker:hover,
+.custom-select .ant-select-selector:hover {
+  border-color: #d81b60;
+}
+
+.custom-search-input .ant-input:focus,
+.custom-date-picker .ant-picker:focus,
+.custom-select .ant-select-selector:focus {
+  border-color: #c2185b;
+  box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+}

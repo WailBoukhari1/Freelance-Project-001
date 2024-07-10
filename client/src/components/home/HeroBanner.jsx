@@ -35,7 +35,7 @@ const HeroBanner = () => {
                 alt={slide.alt}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/90 flex items-center justify-center">
+              <div className="absolute inset-0  flex items-center justify-center">
                 <div className="text-center text-gray-800 max-w-4xl px-6">
                   <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 tracking-wide opacity-0 translate-y-4 animate-[fadeInUp_0.6s_ease-out_forwards]">
                     {slide.title}
