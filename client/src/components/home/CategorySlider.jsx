@@ -1,4 +1,3 @@
-
 const CategorySlider = () => {
   const categories = [
     {
@@ -30,18 +29,18 @@ const CategorySlider = () => {
         <p className="text-center text-primary mb-16 font-light italic text-lg">
           Indulge in our exquisite collection curated just for you
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {categories.map((category) => (
             <div
               key={category.id}
-              className="group overflow-hidden rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl"
             >
               <img
                 src={category.image}
                 alt={category.name}
-                className="w-full h-72 object-cover transition duration-500 ease-in-out transform group-hover:scale-110"
+                className="w-full h-72 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out rounded-lg">
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out rounded-lg">
                 <h3 className="text-white text-2xl font-serif mb-4">
                   {category.name}
                 </h3>
@@ -49,7 +48,7 @@ const CategorySlider = () => {
                   onClick={() =>
                     console.log(`Clicked on category: ${category.name}`)
                   }
-                  className="text-primary text-lg font-light tracking-wide bg-white px-6 py-2 rounded-lg hover:bg-primary hover:text-white transition duration-300 shadow-md hover:shadow-lg"
+                  className="text-primary text-lg font-light tracking-wide bg-white px-6 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
                 >
                   Explore
                 </button>

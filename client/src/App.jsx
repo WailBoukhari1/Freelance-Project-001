@@ -10,8 +10,12 @@ import CheckoutPage from "./pages/CheckoutPage";
 import DashboardAdminPage from "./pages/admin/DashboardPage";
 import DashboardUserPage from "./pages/user/DashboardPage";
 
-// Import CSS files for antd
+// Import CSS files
 import "antd/dist/reset.css";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 import "./App.css";
 
 const App = () => {

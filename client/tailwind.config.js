@@ -12,14 +12,10 @@ export default {
         pink50: '#ffe4e1', // Hex code for a soft pink
         pink100: '#ffccd5', // Hex code for a light pink
       },
-      backgroundImage: {
-        'gradient-pink-to-white': 'linear-gradient(to bottom, #ff69b4, #ffffff)',
-      },
       keyframes: {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
-
         },
       },
       animation: {
@@ -28,4 +24,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

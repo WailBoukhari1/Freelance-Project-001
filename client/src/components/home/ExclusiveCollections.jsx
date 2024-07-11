@@ -10,6 +10,7 @@ const ExclusiveCollections = () => {
   const [isSearchPopupOpen, setIsSearchPopupOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [cart, setCart] = useState([]);
+
   const exclusiveCollections = [
     {
       id: 1,
@@ -76,12 +77,15 @@ const ExclusiveCollections = () => {
   const addToCart = (product) => {
     const existingProduct = cart.find((item) => item.id === product.id);
     if (existingProduct) {
-      const updatedCart = cart.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
       );
-      setCart(updatedCart);
     } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
+      setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]);
     }
     notification.success({
       message: "Item Added",
@@ -90,19 +94,7 @@ const ExclusiveCollections = () => {
   };
 
   const addEntireCollectionToCart = (collection) => {
-    collection.products.forEach((product) => {
-      const existingProduct = cart.find((item) => item.id === product.id);
-      if (existingProduct) {
-        const updatedCart = cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-        setCart(updatedCart);
-      } else {
-        setCart([...cart, { ...product, quantity: 1 }]);
-      }
-    });
+    collection.products.forEach((product) => addToCart(product));
     notification.success({
       message: "Collection Added",
       description: `All items from ${collection.title} have been added to your cart.`,
@@ -111,20 +103,22 @@ const ExclusiveCollections = () => {
 
   const addProductToCollection = (product) => {
     if (selectedCollection) {
-      setSelectedCollection({
-        ...selectedCollection,
-        products: [...selectedCollection.products, product],
-      });
+      setSelectedCollection((prevCollection) => ({
+        ...prevCollection,
+        products: [...prevCollection.products, product],
+      }));
       closeSearchPopup();
     }
   };
 
   const removeProduct = (productId) => {
     if (selectedCollection) {
-      setSelectedCollection({
-        ...selectedCollection,
-        products: selectedCollection.products.filter((p) => p.id !== productId),
-      });
+      setSelectedCollection((prevCollection) => ({
+        ...prevCollection,
+        products: prevCollection.products.filter(
+          (product) => product.id !== productId
+        ),
+      }));
       notification.success({
         message: "Product Removed",
         description: "The product has been removed from the collection.",

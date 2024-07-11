@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { notification, Select, Slider } from "antd"; // Importing Ant Design components (Slider, Select) for comparison
+import { notification, Select, Slider, Breadcrumb } from "antd";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import UserLayout from "../layout/user/UserLayout";
-import { Breadcrumb } from "antd";
+import { HomeOutlined, HeartOutlined, HeartFilled } from "@ant-design/icons";
 
 const { Option } = Select;
 
@@ -12,8 +12,9 @@ const ProductPage = () => {
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [priceRange, setPriceRange] = useState([0, 150]);
   const [sortOrder, setSortOrder] = useState("az");
-  const [currentPage, setCurrentPage] = useState(1); // State for current page
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
+  const [favorites, setFavorites] = useState({});
 
   const products = [
     {
@@ -66,6 +67,10 @@ const ProductPage = () => {
 
   const addToCart = (product) => {
     console.log(`${product.title} added to cart`);
+    notification.success({
+      message: "Product Added",
+      description: `${product.title} has been added to your cart.`,
+    });
   };
 
   const goToDetailsPage = (productId) => {
@@ -78,6 +83,26 @@ const ProductPage = () => {
 
   const handleSortChange = (value) => {
     setSortOrder(value);
+  };
+
+  const toggleFavorite = (productId) => {
+    setFavorites((prevFavorites) => {
+      const newFavorites = { ...prevFavorites };
+      if (newFavorites[productId]) {
+        delete newFavorites[productId];
+        notification.info({
+          message: "Removed from Favorites",
+          description: "The product has been removed from your favorites.",
+        });
+      } else {
+        newFavorites[productId] = true;
+        notification.success({
+          message: "Added to Favorites",
+          description: "The product has been added to your favorites.",
+        });
+      }
+      return newFavorites;
+    });
   };
 
   const sortedAndFilteredProducts = products
@@ -98,8 +123,7 @@ const ProductPage = () => {
       }
     });
 
-  // Pagination logic
-  const productsPerPage = 8; // Number of products per page
+  const productsPerPage = 8;
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = sortedAndFilteredProducts.slice(
@@ -107,7 +131,6 @@ const ProductPage = () => {
     indexOfLastProduct
   );
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const QuickViewModal = ({ product }) => (
@@ -154,13 +177,13 @@ const ProductPage = () => {
           alt={product.title}
           className="w-full h-64 object-cover rounded-lg mb-4"
         />
-        <p className="text-pink-600 text-sm font-medium mb-2">
+        <p className="text-primary text-sm font-medium mb-2">
           {product.category}
         </p>
         <p className="text-gray-600 mb-4">{product.description}</p>
         <div className="flex justify-between items-center mb-4">
           <div>
-            <span className="text-2xl font-bold text-pink-700">
+            <span className="text-2xl font-bold text-primary">
               ${product.discountedPrice.toFixed(2)}
             </span>
             {product.price !== product.discountedPrice && (
@@ -169,12 +192,12 @@ const ProductPage = () => {
               </span>
             )}
           </div>
-          <span className="text-sm text-gray-600 bg-pink-50 px-2 py-1 rounded-lg">
+          <span className="text-sm text-gray-600 bg-primary-light px-2 py-1 rounded-lg">
             {product.stock > 0 ? `In stock: ${product.stock}` : "Out of stock"}
           </span>
         </div>
         <button
-          className="w-full bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition-colors duration-300 font-medium"
+          className="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors duration-300 font-medium"
           onClick={() => {
             addToCart(product);
             closeQuickView();
@@ -201,9 +224,11 @@ const ProductPage = () => {
 
   return (
     <UserLayout>
-      <div className="max-w-7xl mx-auto from-pink-50 to-white my-5 py-10">
-        <Breadcrumb className="mb-6 text-pink-600">
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
+      <div className="max-w-7xl mx-auto bg-white my-5 py-10 px-4">
+        <Breadcrumb className="mb-6 text-primary">
+          <Breadcrumb.Item href="/">
+            <HomeOutlined />
+          </Breadcrumb.Item>
           <Breadcrumb.Item>Maternity Essentials</Breadcrumb.Item>
         </Breadcrumb>
         <div className="flex justify-between items-center mb-6">
@@ -233,28 +258,35 @@ const ProductPage = () => {
           </div>
         </div>
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
         >
           {currentProducts.map((product, index) => (
             <motion.div
               key={product.id}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-pink-100 transform hover:scale-105"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="bg-white rounded-lg overflow-hidden shadow-md relative"
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: {
+                  opacity: 1,
+                  scale: 1,
+                  transition: {
+                    delay: index * 0.1,
+                  },
+                },
+              }}
             >
               <div className="relative group">
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-10"
+                  className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute top-2 right-2 bg-pink-500 text-white py-1 px-2 text-xs rounded-lg shadow-md">
+                <div className="absolute top-2 right-2 bg-primary text-white py-1 px-2 text-xs rounded-lg shadow-md">
                   {calculateDiscount(
                     product.price,
                     product.discountedPrice
@@ -262,29 +294,37 @@ const ProductPage = () => {
                   % off
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
-                <motion.div
-                  className="absolute bottom-2 left-2 right-2 "
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <motion.button
+                  className="absolute top-2 left-2 bg-white rounded-full p-1 shadow-md"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => toggleFavorite(product.id)}
                 >
+                  {favorites[product.id] ? (
+                    <HeartFilled className="text-primary text-lg" />
+                  ) : (
+                    <HeartOutlined className="text-primary text-lg" />
+                  )}
+                </motion.button>
+                <div className="absolute bottom-2 left-2 right-2">
                   <button
-                    className="w-full bg-white text-pink-800 py-1 px-2 rounded-lg hover:bg-pink-100 transition-colors duration-300 text-sm font-medium"
+                    className="w-full bg-white text-primary py-1 px-2 rounded-lg hover:bg-primary-light transition-colors duration-300 text-sm font-medium"
                     onClick={() => openQuickView(product)}
                   >
                     Quick View
                   </button>
-                </motion.div>
+                </div>
               </div>
-              <div className="p-3">
-                <p className="text-pink-600 text-xs font-medium mb-1">
+              <div className="p-4">
+                <p className="text-primary text-xs font-medium mb-1">
                   {product.category}
                 </p>
-                <h3 className="text-sm font-semibold mb-2 text-gray-800 truncate">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2 truncate">
                   {product.title}
                 </h3>
                 <div className="flex justify-between items-center mb-2">
                   <div>
-                    <span className="text-lg font-bold text-pink-700">
+                    <span className="text-lg font-bold text-primary">
                       ${product.discountedPrice.toFixed(2)}
                     </span>
                     {product.price !== product.discountedPrice && (
@@ -293,7 +333,7 @@ const ProductPage = () => {
                       </span>
                     )}
                   </div>
-                  <span className="text-xs text-gray-600 bg-pink-50 px-1 py-0.5 rounded-lg">
+                  <span className="text-xs text-gray-600 bg-primary-light px-2 py-0.5 rounded-lg">
                     {product.stock > 0
                       ? `Stock: ${product.stock}`
                       : "Out of stock"}
@@ -302,14 +342,14 @@ const ProductPage = () => {
                 <div className="space-y-2">
                   <motion.button
                     onClick={() => goToDetailsPage(product.id)}
-                    className="w-full bg-pink-100 text-pink-800 py-1 px-2 rounded-lg hover:bg-pink-200 transition-colors duration-300 text-sm font-medium"
+                    className="w-full bg-white text-primary py-1 px-2 rounded-lg border border-primary hover:bg-primary-lighter transition-colors duration-300 text-sm font-medium"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     View Details
                   </motion.button>
                   <motion.button
-                    className="w-full bg-pink-500 text-white py-1 px-2 rounded-lg hover:bg-pink-600 transition-colors duration-300 text-sm font-medium"
+                    className="w-full bg-primary text-white py-1 px-2 rounded-lg hover:bg-primary-dark transition-colors duration-300 text-sm font-medium"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => {
@@ -339,8 +379,8 @@ const ProductPage = () => {
                 key={index}
                 className={`mx-2 py-2 px-4 rounded-lg ${
                   currentPage === index + 1
-                    ? "bg-pink-500 text-white"
-                    : "bg-pink-100 text-pink-800 hover:bg-pink-200 hover:text-white"
+                    ? "bg-primary text-white"
+                    : "bg-primary-light text-primary hover:bg-primary-lighter hover:text-white"
                 } transition-colors duration-300`}
                 onClick={() => paginate(index + 1)}
               >
