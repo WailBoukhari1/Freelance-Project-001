@@ -9,6 +9,8 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import DashboardAdminPage from "./pages/admin/DashboardPage";
 import DashboardUserPage from "./pages/user/DashboardPage";
+import NotFoundPage from "./pages/404Page";
+import AboutPage from "./pages/AboutPage";
 
 // Import CSS files
 import "antd/dist/reset.css";
@@ -32,6 +34,8 @@ const App = () => {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/admin/dashboard" element={<DashboardAdminPage />} />
           <Route path="/user/dashboard" element={<DashboardUserPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </div>
     </Router>

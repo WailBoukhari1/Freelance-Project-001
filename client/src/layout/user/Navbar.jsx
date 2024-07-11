@@ -8,6 +8,7 @@ import {
   ShoppingCartOutlined,
   MenuOutlined,
   CloseOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
@@ -334,7 +335,9 @@ const Navbar = () => {
           {formMode === "login" && (
             <>
               <Form.Item>
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox>
+                  Remember Me
+                </Checkbox>
               </Form.Item>
               <Form.Item>
                 <button
@@ -424,7 +427,7 @@ const Navbar = () => {
                 <div className="text-right">
                   <p className="text-sm font-semibold">${item.price}</p>
                   <button className="text-red-500 hover:text-red-700 mt-2">
-                    Remove
+                    <DeleteOutlined />
                   </button>
                 </div>
               </div>
