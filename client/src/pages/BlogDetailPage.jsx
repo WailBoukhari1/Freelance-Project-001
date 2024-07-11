@@ -1,9 +1,15 @@
 import { useParams } from "react-router-dom";
-import { Card, Typography, Breadcrumb, List, Avatar, Form, Input,Button } from "antd";
+import {
+  Typography,
+  Breadcrumb,
+  List,
+  Avatar,
+  Form,
+  Input,
+} from "antd";
 import { HomeOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import UserLayout from "../layout/user/UserLayout";
 import { Comment } from "@ant-design/compatible";
-import "tailwindcss/tailwind.css";
 
 const { Title, Paragraph } = Typography;
 const { TextArea } = Input;
@@ -34,14 +40,8 @@ const blogData = {
 };
 
 const latestPosts = [
-  {
-    title: "Preparing for Parenthood",
-    link: "/blog/3",
-  },
-  {
-    title: "Mental Health During Pregnancy",
-    link: "/blog/4",
-  },
+  { title: "Preparing for Parenthood", link: "/blog/3" },
+  { title: "Mental Health During Pregnancy", link: "/blog/4" },
 ];
 
 const tags = ["Motherhood", "Pregnancy", "Health", "Wellness", "Parenting"];
@@ -70,6 +70,7 @@ const comments = [
   },
 ];
 
+
 const BlogDetailPage = () => {
   const { id } = useParams();
   const blog = blogData[id];
@@ -81,8 +82,11 @@ const BlogDetailPage = () => {
           <Title level={2} className="text-center text-primary">
             Blog not found
           </Title>
-          <a href="/blog" className="btn-primary">
-            <Button icon={<ArrowLeftOutlined />}>Back to Blog</Button>
+          <a href="/blog" className="inline-block mt-4">
+            <button className="flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-opacity-90 transition duration-300">
+              <ArrowLeftOutlined className="mr-2" />
+              Back to Blog
+            </button>
           </a>
         </div>
       </UserLayout>
@@ -102,42 +106,43 @@ const BlogDetailPage = () => {
 
         <div className="flex flex-col md:flex-row">
           <div className="md:w-2/3 pr-4">
-            <Card
-              hoverable
-              cover={
-                <img
-                  alt={blog.title}
-                  src={blog.image}
-                  className="rounded-t-lg"
-                />
-              }
-              className="mb-4 shadow-lg"
-              bodyStyle={{
-                background: "linear-gradient(to right, #ffe4e1, #fff)",
-              }}
-            >
-              <Title level={2} className="text-primary text-center">
-                {blog.title}
-              </Title>
-              <Paragraph className="text-center text-pink-500 mb-4">
-                {blog.author} - {blog.date}
-              </Paragraph>
-              <Paragraph className="text-gray-800 whitespace-pre-wrap leading-relaxed">
-                {blog.content}
-              </Paragraph>
-              <div className="text-center mt-4">
-                <a href="/blog" className="btn-primary">
-                  <Button icon={<ArrowLeftOutlined />}>Back to Blog</Button>
-                </a>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4">
+              <img
+                alt={blog.title}
+                src={blog.image}
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-6 bg-gradient-to-r from-pink50 to-white">
+                <Title level={2} className="text-primary text-center">
+                  {blog.title}
+                </Title>
+                <Paragraph className="text-center text-primary mb-4">
+                  {blog.author} - {blog.date}
+                </Paragraph>
+                <Paragraph className="text-gray-800 whitespace-pre-wrap leading-relaxed">
+                  {blog.content}
+                </Paragraph>
+                <div className="text-center mt-4">
+                  <a href="/blog" className="inline-block">
+                    <button className="flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-opacity-90 transition duration-300">
+                      <ArrowLeftOutlined className="mr-2" />
+                      Back to Blog
+                    </button>
+                  </a>
+                </div>
               </div>
-            </Card>
+            </div>
 
             <div className="mt-6">
-              <Title level={3}>Comments</Title>
+              <Title level={3} className="text-primary">
+                Comments
+              </Title>
               {comments.map((comment, index) => (
                 <Comment
                   key={index}
-                  author={comment.author}
+                  author={
+                    <span className="text-primary">{comment.author}</span>
+                  }
                   avatar={<Avatar src={comment.avatar} alt={comment.author} />}
                   content={
                     <div>
@@ -146,7 +151,11 @@ const BlogDetailPage = () => {
                         comment.replies.map((reply, replyIndex) => (
                           <Comment
                             key={replyIndex}
-                            author={reply.author}
+                            author={
+                              <span className="text-primary">
+                                {reply.author}
+                              </span>
+                            }
                             avatar={
                               <Avatar src={reply.avatar} alt={reply.author} />
                             }
@@ -161,25 +170,38 @@ const BlogDetailPage = () => {
                 />
               ))}
               <Form.Item>
-                <TextArea rows={4} placeholder="Add a comment" />
+                <TextArea
+                  rows={4}
+                  placeholder="Add a comment"
+                  className="border-pink100 focus:border-primary"
+                />
               </Form.Item>
               <Form.Item>
-                <Button htmlType="submit" type="primary">
+                <button className="px-4 py-2 bg-primary text-white rounded hover:bg-opacity-90 transition duration-300">
                   Add Comment
-                </Button>
+                </button>
               </Form.Item>
             </div>
           </div>
 
           <div className="md:w-1/3 pl-4">
             <div className="mb-4">
-              <Title level={3}>Latest Posts</Title>
+              <Title level={3} className="text-primary">
+                Latest Posts
+              </Title>
               <List
                 dataSource={latestPosts}
                 renderItem={(item) => (
                   <List.Item>
                     <List.Item.Meta
-                      title={<a href={item.link}>{item.title}</a>}
+                      title={
+                        <a
+                          href={item.link}
+                          className="text-primary hover:text-opacity-80"
+                        >
+                          {item.title}
+                        </a>
+                      }
                     />
                   </List.Item>
                 )}
@@ -187,12 +209,14 @@ const BlogDetailPage = () => {
             </div>
 
             <div className="mb-4">
-              <Title level={3}>Tags</Title>
+              <Title level={3} className="text-primary">
+                Tags
+              </Title>
               <div className="flex flex-wrap">
                 {tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="bg-pink-200 text-pink-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2"
+                    className="bg-pink50 text-primary rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2"
                   >
                     {tag}
                   </span>
