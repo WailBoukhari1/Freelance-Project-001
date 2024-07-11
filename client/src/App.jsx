@@ -11,7 +11,8 @@ import DashboardAdminPage from "./pages/admin/DashboardPage";
 import DashboardUserPage from "./pages/user/DashboardPage";
 import NotFoundPage from "./pages/404Page";
 import AboutPage from "./pages/AboutPage";
-
+import Contact from "./pages/ContactPage";
+import ThankYouPage from "./pages/ThankYouPage";
 // Import CSS files
 import "antd/dist/reset.css";
 import "swiper/css";
@@ -36,6 +37,8 @@ const App = () => {
           <Route path="/user/dashboard" element={<DashboardUserPage />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/thank-you" element={<ThankYouPage />} />
         </Routes>
       </div>
     </Router>

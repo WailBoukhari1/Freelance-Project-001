@@ -1,7 +1,6 @@
+import UserLayout from "../../layout/user/UserLayout";
 
 const DashboardPage = () => {
-    return (
-    <></>
-    );
+  return <UserLayout></UserLayout>;
 };
 export default DashboardPage;
