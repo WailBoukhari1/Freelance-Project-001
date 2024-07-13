@@ -1,6 +1,6 @@
 import UserLayout from "../layout/user/UserLayout";
 
-const AboutPage = () => {
+const AllCollectionsPage = () => {
   return <UserLayout></UserLayout>;
 };
-export default AboutPage;
+export default AllCollectionsPage;

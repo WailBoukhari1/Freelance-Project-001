@@ -1,6 +1,6 @@
 import UserLayout from "../../layout/user/UserLayout";
 
-const ManageCategorys = () => {
+const ForgotPasswordPage = () => {
   return <UserLayout></UserLayout>;
 };
-export default ManageCategorys;
+export default ForgotPasswordPage;
