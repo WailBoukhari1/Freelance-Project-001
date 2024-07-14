@@ -5,7 +5,6 @@ import {
   Col,
   Form,
   Input,
-  Button,
   notification,
 } from "antd";
 import UserLayout from "../../layout/user/UserLayout";
@@ -23,7 +22,7 @@ const ShippingAddress = () => {
     });
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = () => {
     notification.error({
       message: "Erreur",
       description:
@@ -40,7 +39,7 @@ const ShippingAddress = () => {
         <Layout>
           <Content className="m-6 overflow-auto">
             <div className="p-6 bg-white min-h-[360px] shadow-md rounded-lg">
-              <h1 className="text-4xl font-bold mb-8 text-primary">
+              <h1 className="text-4xl font-bold mb-8 text-gray-800">
                 Adresse de Livraison
               </h1>
 
@@ -145,7 +144,7 @@ const ShippingAddress = () => {
                       <Form.Item>
                         <button
                           type="submit"
-                          className="px-4 py-2 font-semibold text-white bg-primary hover:bg-pink100 hover:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                          className="px-4 py-2 font-semibold text-white bg-primary hover:bg-pink100 hover:text-primary rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
                         >
                           Enregistrer
                         </button>
