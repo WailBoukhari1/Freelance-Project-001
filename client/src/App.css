@@ -2,21 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-/* custom.css */
-.ant-menu-item-selected {
-  background-color: #ff69b4 !important;
-  color: white !important;
-}
-
-.ant-menu-item-selected a {
-  color: white !important;
-}
-
-.ant-menu-item:hover {
-  background-color: #faa8d1 !important;
-  color: white !important;
-}
-
-.ant-menu-item:hover a {
-  color: white !important;
-}

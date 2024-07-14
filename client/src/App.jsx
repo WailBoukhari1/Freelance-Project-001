@@ -30,10 +30,23 @@ const ResetPasswordPage = lazy(() => import("./pages/auth/ResetPasswordPage"));
 // Admin related pages
 const DashboardAdminPage = lazy(() => import("./pages/admin/DashboardPage"));
 const ManageBlogs = lazy(() => import("./pages/admin/ManageBlogs"));
+const ManageBlogsCreate = lazy(() => import("./pages/admin/ManageBlogs/Create"));
+const ManageBlogsEdit = lazy(() => import("./pages/admin/ManageBlogs/Edit"));
 const ManageProducts = lazy(() => import("./pages/admin/ManageProducts"));
+const ManageProductsCreate = lazy(() => import("./pages/admin/ManageProducts/Create"));
+const ManageProductsEdit = lazy(() => import("./pages/admin/ManageProducts/Edit"));
 const ManageOrders = lazy(() => import("./pages/admin/ManageOrders"));
+const ManageOrdersCreate = lazy(() => import("./pages/admin/ManageOrders/Create"));
+const ManageOrdersEdit = lazy(() => import("./pages/admin/ManageOrders/Edit"));
 const ManageUsers = lazy(() => import("./pages/admin/ManageUsers"));
+const ManageUsersCreate = lazy(() => import("./pages/admin/ManageUsers/Create"));
+const ManageUsersEdit = lazy(() => import("./pages/admin/ManageUsers/Edit"));
 const ManageCategories = lazy(() => import("./pages/admin/ManageCategories"));
+const ManageCategoriesCreate = lazy(() => import("./pages/admin/ManageCategories/Create"));
+const ManageCategoriesEdit = lazy(() => import("./pages/admin/ManageCategories/Edit"));
+const ManageCollections = lazy(() => import("./pages/admin/ManageCollections"));
+const ManageCollectionsCreate = lazy(() => import("./pages/admin/ManageCollections/Create"));
+const ManageCollectionsEdit = lazy(() => import("./pages/admin/ManageCollections/Edit"));
 
 import LoadingComponent from "./components/LoadingComponent";
 import "antd/dist/reset.css"; 
@@ -42,6 +55,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import "./assets/css/style.css";
 import "./App.css";
 
 const App = () => {
@@ -83,10 +97,23 @@ const App = () => {
               {/* Admin Routes */}
               <Route path="/admin/dashboard" element={<DashboardAdminPage />} />
               <Route path="/manage-blogs" element={<ManageBlogs />} />
-              <Route path="/manage-products" element={<ManageProducts />} />
-              <Route path="/manage-orders" element={<ManageOrders />} />
-              <Route path="/manage-users" element={<ManageUsers />} />
+              <Route path="/manage-blogs/create" element={<ManageBlogsCreate />} />
+              <Route path="/manage-blogs/edit/:id" element={<ManageBlogsEdit />} />
               <Route path="/manage-categories" element={<ManageCategories />} />
+              <Route path="/manage-categories/create" element={<ManageCategoriesCreate />} />
+              <Route path="/manage-categories/edit/:id" element={<ManageCategoriesEdit />} />
+              <Route path="/manage-collections" element={<ManageCollections />} />
+              <Route path="/manage-collections/create" element={<ManageCollectionsCreate />} />
+              <Route path="/manage-collections/edit/:id" element={<ManageCollectionsEdit />} />
+              <Route path="/manage-orders" element={<ManageOrders />} />
+              <Route path="/manage-orders/create" element={<ManageOrdersCreate />} />
+              <Route path="/manage-orders/edit/:id" element={<ManageOrdersEdit />} />
+              <Route path="/manage-products" element={<ManageProducts />} />
+              <Route path="/manage-products/create" element={<ManageProductsCreate />} />
+              <Route path="/manage-products/edit/:id" element={<ManageProductsEdit />} />
+              <Route path="/manage-users" element={<ManageUsers />} />
+              <Route path="/manage-users/create" element={<ManageUsersCreate />} />
+              <Route path="/manage-users/edit/:id" element={<ManageUsersEdit />} />
             </Routes>
           </Suspense>
         </div>

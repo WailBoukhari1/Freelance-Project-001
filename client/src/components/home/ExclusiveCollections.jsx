@@ -1,6 +1,13 @@
 import { useState } from "react";
-import { Modal, Tooltip, Card, Typography, Input, notification } from "antd";
-import "tailwindcss/tailwind.css";
+import {
+  Modal,
+  Tooltip,
+  Card,
+  Typography,
+  Input,
+  notification,
+  Button,
+} from "antd";
 
 const { Title, Text } = Typography;
 
@@ -135,9 +142,7 @@ const ExclusiveCollections = () => {
       <div className="text-center">
         <Title
           level={1}
-          className="text-6xl font-serif font-light text-center mb-6 text-primary relative
-                      before:content-[''] before:absolute before:w-24 before:h-1 before:bg-primary
-                      before:-bottom-2 before:left-1/2 before:-translate-x-1/2"
+          className="text-6xl font-serif font-light text-primary mb-6"
         >
           Exclusive Collections
         </Title>
@@ -159,19 +164,20 @@ const ExclusiveCollections = () => {
                     className="w-full h-64 object-cover"
                   />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
-                    <button
+                    <Button
+                      type="primary"
                       onClick={() => openCollectionPopup(collection)}
-                      className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300"
+                      className="px-6 py-2 rounded-lg"
                     >
                       View Collection
-                    </button>
+                    </Button>
                   </div>
                 </div>
               }
             >
               <Card.Meta
                 title={
-                  <Text strong className="text-xl text-pink-500">
+                  <Text strong className="text-xl text-primary">
                     {collection.title}
                   </Text>
                 }
@@ -195,14 +201,14 @@ const ExclusiveCollections = () => {
       >
         {selectedCollection && (
           <div className="text-center">
-            <Title level={2} className="text-3xl font-bold mb-4 text-pink-500">
+            <Title level={2} className="text-3xl font-bold mb-4 text-primary">
               {selectedCollection.title}
             </Title>
             <Text italic className="text-xl text-gray-600 mb-8">
               {selectedCollection.subtitle}
             </Text>
 
-            <Title level={3} className="text-2xl font-bold mb-4 text-pink-500">
+            <Title level={3} className="text-2xl font-bold mb-4 text-primary">
               Products
             </Title>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -218,7 +224,7 @@ const ExclusiveCollections = () => {
                       className="w-full h-48 object-cover mb-4"
                     />
                     <div className="text-center">
-                      <Text strong className="text-xl text-pink-500">
+                      <Text strong className="text-xl text-primary">
                         {product.name}
                       </Text>
                       <Text type="secondary" className="text-gray-600">
@@ -226,25 +232,27 @@ const ExclusiveCollections = () => {
                       </Text>
                     </div>
                     <div className="mt-4">
-                      <Text strong className="text-lg text-pink-500">
+                      <Text strong className="text-lg text-primary">
                         ${product.price.toFixed(2)}
                       </Text>
                       <div className="mt-4 flex justify-center space-x-4">
                         <Tooltip title="Add to Cart">
-                          <button
+                          <Button
+                            type="primary"
                             onClick={() => addToCart(product)}
-                            className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300"
+                            className="px-6 py-2 rounded-lg"
                           >
                             Add to Cart
-                          </button>
+                          </Button>
                         </Tooltip>
                         <Tooltip title="Remove from Collection">
-                          <button
+                          <Button
+                            type="danger"
                             onClick={() => removeProduct(product.id)}
-                            className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition duration-300"
+                            className="px-6 py-2 rounded-lg"
                           >
                             Remove
-                          </button>
+                          </Button>
                         </Tooltip>
                       </div>
                     </div>
@@ -254,24 +262,27 @@ const ExclusiveCollections = () => {
             </div>
 
             <div className="mt-8 flex justify-center space-x-4">
-              <button
+              <Button
+                type="primary"
                 onClick={() => addEntireCollectionToCart(selectedCollection)}
-                className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300"
+                className="px-6 py-2 rounded-lg"
               >
                 Add Entire Collection to Cart
-              </button>
-              <button
+              </Button>
+              <Button
+                type="default"
                 onClick={openSearchPopup}
-                className="bg-white text-primary border border-primary hover:bg-primary hover:text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300"
+                className="px-6 py-2 rounded-lg"
               >
                 Add New Product
-              </button>
-              <button
+              </Button>
+              <Button
+                type="default"
                 onClick={closeCollectionPopup}
-                className="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300"
+                className="px-6 py-2 rounded-lg"
               >
                 Close
-              </button>
+              </Button>
             </div>
           </div>
         )}
@@ -284,7 +295,7 @@ const ExclusiveCollections = () => {
         width={800}
         className="p-6"
       >
-        <Title level={2} className="text-3xl font-bold mb-4 text-pink-500">
+        <Title level={2} className="text-3xl font-bold mb-4 text-primary">
           Search Products
         </Title>
         <Input
@@ -306,7 +317,7 @@ const ExclusiveCollections = () => {
                   className="w-full h-48 object-cover mb-4"
                 />
                 <div className="text-center">
-                  <Text strong className="text-xl text-pink-500">
+                  <Text strong className="text-xl text-primary">
                     {product.name}
                   </Text>
                   <Text type="secondary" className="text-gray-600">
@@ -317,27 +328,29 @@ const ExclusiveCollections = () => {
                   </Text>
                 </div>
                 <div className="mt-4">
-                  <Text strong className="text-lg text-pink-500">
+                  <Text strong className="text-lg text-primary">
                     ${product.price.toFixed(2)}
                   </Text>
-                  <button
+                  <Button
+                    type="primary"
                     onClick={() => addProductToCollection(product)}
-                    className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300 mt-4"
+                    className="px-6 py-2 rounded-lg mt-4"
                   >
                     Add to Collection
-                  </button>
+                  </Button>
                 </div>
               </div>
             </Card>
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <button
+          <Button
+            type="default"
             onClick={closeSearchPopup}
-            className="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-opacity-80 transition duration-300"
+            className="px-6 py-2 rounded-lg"
           >
             Close
-          </button>
+          </Button>
         </div>
       </Modal>
     </section>

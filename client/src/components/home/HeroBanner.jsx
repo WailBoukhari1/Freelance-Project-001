@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
-
+import {Button } from "antd";
 
 const HeroBanner = () => {
   const bannerData = [
@@ -61,15 +61,13 @@ const HeroBanner = () => {
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center text-gray-800 max-w-4xl px-6">
-                  <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 tracking-wide opacity-0 translate-y-4 animate-fadeInUp">
-                    {slide.title}
-                  </h2>
-                  <p className="text-lg md:text-xl mb-6 font-light opacity-0 translate-y-4 animate-fadeInUp delay-300">
-                    {slide.description}
-                  </p>
-                  <button className="bg-rose-300 text-white py-2 px-6 rounded-lg hover:bg-rose-400 transition duration-300 text-sm md:text-base font-medium shadow-md opacity-0 translate-y-4 animate-fadeInUp delay-600">
+                  <Button
+                    type="primary"
+                    size="large"
+                    className="hero-banner-button"
+                  >
                     {slide.buttonText}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

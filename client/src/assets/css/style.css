@@ -1,0 +1,107 @@
+/* antDesignStyles.css */
+
+:root {
+  --primary-color: #ff69b4;
+  --white-color: #ffffff;
+  --pink50-color: #ffe4e1;
+  --pink100-color: #ffccd5;
+  --hover-color: #faa8d1;
+}
+
+/* Ant Design Button */
+.ant-btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus,
+.ant-btn-primary:active {
+  background-color: var(--hover-color) !important;
+  border-color: var(--hover-color) !important;
+}
+
+/* Ant Design Input */
+.ant-input {
+  background-color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.ant-input:focus,
+.ant-input:hover {
+  border-color: var(--hover-color);
+  box-shadow: 0 0 0 2px rgba(250, 168, 209, 0.2); /* hover-color with transparency */
+}
+
+/* Ant Design Form Item Label */
+.ant-form-item-label > label {
+  color: var(--primary-color);
+}
+
+/* Ant Design Typography */
+.ant-typography {
+  color: var(--primary-color);
+}
+
+/* Ant Design Notification */
+.ant-notification-notice {
+  background-color: var(--pink50-color);
+  border-color: var(--primary-color);
+}
+
+/* Ant Design Card */
+.ant-card {
+  background-color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.ant-card-head-title {
+  color: var(--primary-color);
+}
+
+/* Ant Design Modal */
+.ant-modal-content {
+  background-color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.ant-modal-header {
+  background-color: var(--pink50-color);
+  border-color: var(--primary-color);
+}
+
+.ant-modal-title {
+  color: var(--primary-color);
+}
+
+.ant-modal-footer .ant-btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.ant-modal-footer .ant-btn-primary:hover,
+.ant-modal-footer .ant-btn-primary:focus,
+.ant-modal-footer .ant-btn-primary:active {
+  background-color: var(--hover-color) !important;
+  border-color: var(--hover-color) !important;
+}
+/* Add these styles to your CSS file */
+.ant-tabs-tab {
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ant-tabs-tab-active {
+  background-color: #ff69b4 !important; /* Primary color */
+  color: #ffffff !important; /* White color */
+}
+
+.ant-tabs-tab:hover {
+  background-color: #ffe4e1; /* Soft pink color */
+  color: #ff69b4; /* Primary color */
+}
+
+.ant-tabs-ink-bar {
+  background-color: #ff69b4 !important; /* Primary color */
+}
