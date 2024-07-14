@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const userMenu = (
     <Menu>
-      <Menu.Item key="profile" icon={<UserOutlined />}>
-        <Link to="/profile">Go To Website</Link>
+      <Menu.Item key="home" icon={<UserOutlined />}>
+        <Link to="/">Go To Website</Link>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key="logout" icon={<LogoutOutlined />}>

@@ -63,6 +63,12 @@ const ExclusiveCollections = () => {
     (collection) => collection.products
   );
 
+  const calculateTotalPrice = (products) => {
+    return products
+      .reduce((total, product) => total + product.price, 0)
+      .toFixed(2);
+  };
+
   const openCollectionPopup = (collection) => {
     setSelectedCollection(collection);
     setIsCollectionPopupOpen(true);
@@ -182,9 +188,14 @@ const ExclusiveCollections = () => {
                   </Text>
                 }
                 description={
-                  <Text type="secondary" className="text-gray-600">
-                    {collection.subtitle}
-                  </Text>
+                  <div>
+                    <Text type="secondary" className="text-gray-600">
+                      {collection.subtitle}
+                    </Text>
+                    <Text type="secondary" className="text-gray-600">
+                      Total Price: ${calculateTotalPrice(collection.products)}
+                    </Text>
+                  </div>
                 }
               />
             </Card>
@@ -193,7 +204,7 @@ const ExclusiveCollections = () => {
       </div>
 
       <Modal
-        visible={isCollectionPopupOpen}
+        open={isCollectionPopupOpen}
         onCancel={closeCollectionPopup}
         footer={null}
         width={1000}
@@ -206,6 +217,9 @@ const ExclusiveCollections = () => {
             </Title>
             <Text italic className="text-xl text-gray-600 mb-8">
               {selectedCollection.subtitle}
+            </Text>
+            <Text strong className="text-xl text-gray-600 mb-8">
+              Total Price: ${calculateTotalPrice(selectedCollection.products)}
             </Text>
 
             <Title level={3} className="text-2xl font-bold mb-4 text-primary">
@@ -289,7 +303,7 @@ const ExclusiveCollections = () => {
       </Modal>
 
       <Modal
-        visible={isSearchPopupOpen}
+        open={isSearchPopupOpen}
         onCancel={closeSearchPopup}
         footer={null}
         width={800}

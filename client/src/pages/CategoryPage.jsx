@@ -1,57 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { notification, Select, Slider, Breadcrumb } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import UserLayout from "../layout/user/UserLayout";
 import { HomeOutlined, HeartOutlined, HeartFilled } from "@ant-design/icons";
 
 const { Option } = Select;
 
-const ProductPage = () => {
+const CategoryPage = () => {
+  const { category } = useParams();
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [priceRange, setPriceRange] = useState([0, 150]);
   const [sortOrder, setSortOrder] = useState("az");
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const [favorites, setFavorites] = useState({});
+  const [products, setProducts] = useState([]);
 
-  const products = [
-    {
-      id: 1,
-      title: "Comfy Maternity Dress",
-      category: "Maternity",
-      image:
-        "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
-      price: 100,
-      discountedPrice: 80,
-      stock: 15,
-      description: "A comfortable and stylish dress for expecting mothers.",
-    },
-    {
-      id: 2,
-      title: "Pregnancy Support Belt",
-      category: "Maternity",
-      image:
-        "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
-      price: 50,
-      discountedPrice: 40,
-      stock: 20,
-      description: "Provides excellent support for your growing belly.",
-    },
-    {
-      id: 3,
-      title: "Maternity Skincare Set",
-      category: "Beauty",
-      image:
-        "https://static.thebump.com/tb-web-assets/bop2022/jump-link-post-pregnancy.png",
-      price: 80,
-      discountedPrice: 60,
-      stock: 10,
-      description: "Nourishing skincare products safe for pregnancy.",
-    },
-    // Add more products as needed
-  ];
+  useEffect(() => {
+    // Fetch products from the API based on the category
+    const fetchProducts = async () => {
+      const response = await fetch(`/api/products?category=${category}`);
+      const data = await response.json();
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, [category]);
 
   const calculateDiscount = (price, discountedPrice) => {
     return ((price - discountedPrice) / price) * 100;
@@ -229,7 +205,7 @@ const ProductPage = () => {
           <Breadcrumb.Item href="/">
             <HomeOutlined />
           </Breadcrumb.Item>
-          <Breadcrumb.Item>Maternity Essentials</Breadcrumb.Item>
+          <Breadcrumb.Item>{category}</Breadcrumb.Item>
         </Breadcrumb>
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center">
@@ -397,4 +373,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default CategoryPage;
